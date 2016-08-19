@@ -53,6 +53,20 @@
         // handle your message
     })
     ```
-    6. 打开webview内部的form表单，webview内部默认是不允许打开新页面或者新window，当然一般来说可以通过监听`newwindow`事件去手动处理，但是碰到form表单的时候则比较麻烦，如果用`window.open`/`nw.Window.open`就无法传递form里面的数据，其实这里可以选择稍微绕一下，通过上面的`consolemessage`事件，获取到webview内部的form数据，然后在NW.js这边重新构造一个新的form表单，然后在出发submit就可以了。
+    6. 打开webview内部的form表单，webview内部默认是不允许打开新页面或者新window，当然一般来说可以通过监听`newwindow`事件去手动处理，但是碰到form表单的时候则比较麻烦，如果用`window.open`/`nw.Window.open`就无法传递form里面的数据，其实这里可以选择稍微绕一下，通过上面的`consolemessage`事件，获取到webview内部的form数据，然后在NW.js这边重新构造一个新的form表单，然后在触发submit就可以了。
 
-* 插件的使用
+
+* Flash插件的使用
+
+    这里只需要区分你所需的Flash版本是32位还是64位的就可以，你可以在chrome中的plugins里面找到flash的插件文件，地址：`chrome://plugins/`，或者使用我项目里面的plugins文件，使用方法如下：
+
+    1. 开发过程中请放到你的NW.js sdk的文件夹下，并且将目录命名成`PepperFlash`
+    2. 当你需要对项目进行打包的时候，记得也要放到对应的cache的包中
+
+* 自定义Top Bar
+
+* Updater
+
+## 应用打包(package)
+
+## 应用安装包(windows installer/Mac)
