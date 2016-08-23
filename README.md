@@ -63,9 +63,48 @@
     1. 开发过程中请放到你的NW.js sdk的文件夹下，并且将目录命名成`PepperFlash`
     2. 当你需要对项目进行打包的时候，记得也要放到对应的cache的包中
 
+
 * 自定义Top Bar
 
+    在NW.js中你可以抛弃掉默认那丑陋的Top Bar，然后自己实现一个，像下面这样，So easy~
+    ```html
+    //html
+    <header id="app-top-header" class="clearfix"><header>
+
+    //style
+    <style>
+        #app-top-header {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            background-color: #34BF49;
+            -webkit-app-region: drag;
+        }
+    </style>
+    ```
+    其实在上面的代码中`-webkit-app-region: drag; `才是真正起到效果的样式，让你的自定义top bar和系统的行为一致而不用自己去写js代码实现对应的拖拽
+
+
 * Updater
+
+    NW.js并没有和Electron一样，可以通过Squirrel框架来实现自动更新相关的功能，必须依赖第三方库，这里使用到的是[node-webkit-updater](https://github.com/edjafarov/node-webkit-updater)，github上其实已经写了一个updater的流程范例，地址是[https://github.com/edjafarov/node-webkit-updater/blob/master/examples/basic.js](https://github.com/edjafarov/node-webkit-updater/blob/master/examples/basic.js)。
+    但是在使用过程中发现了一个小问题，就是在执行`upd.download()`时，可能无法执行成功，后来经过尝试，发现给他一个延时后就能解决调用无效的问题，怀疑是`upd`内部当App打开时立即调用的话可能内部的下载相关的逻辑并未准备好，所以解决代码就是:
+    ```javascript
+    setTimeout(() => {
+        upd.download()
+    }, 1000);
+    ```
+
+* Other
+    1. 在NW.js中打开IE或特定浏览器
+        ```javascript
+        const exec = require('child_process').exec;
+
+        exec(`start "" "iexplore" "${url}"`);
+        ```
 
 ## 应用打包(package)
 
