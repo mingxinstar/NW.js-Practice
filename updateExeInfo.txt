@@ -1,0 +1,6 @@
+[FILENAMES]
+Exe= E:\Workspace\MeMe-RIA\build\Practice\win32\Practice.exe
+SaveAs= E:\Workspace\MeMe-RIA\build\Practice\win32\Practice_new.exe
+
+[COMMANDS]
+-addoverwrite  E:\Workspace\MeMe-RIA\version.res,,,
