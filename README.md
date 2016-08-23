@@ -99,6 +99,7 @@
     ```
 
 * Other
+
     1. 在NW.js中打开IE或特定浏览器
         ```javascript
         const exec = require('child_process').exec;
@@ -108,4 +109,18 @@
 
 ## 应用打包(package)
 
-## 应用安装包(windows installer/Mac)
+OK，代码写完了那么就要考虑接下来的问题了，帮你的代码打包出来，一般情况下用来做NW.js的打包最容易找到的是`nw-builder`可是尝试了很多次之后一直无法正常的编译通过
+直到我使用了[grunt-nw-builder](https://github.com/nwjs/grunt-nw-builder/)，好吧，其实他们并没有什么区别，这个也只是`nw-builder`的grunt插件，可是问题是这个
+用起来毫无问题。。。Anyway，总之能用就好，具体使用方法参见`grunt`和`grunt-nw-builder`文档，或者可以看这个项目中的`Gruntfile.js`
+
+## 应用安装包(windows installer)
+
+在windows下有比较多的安装包打包工具，比如`Windows installer`,`NSIS`或`Inno Setup`，在这里我选择使用`NSIS`，嗯，当初觉得这个可能用起来比较简单，但是实际上并！不！是！
+
+好吧，其实另外两个也没比这个简单( 无奈脸 :( )
+
+大致的NSIS脚本大体结构可以参考项目内的`install.nsi`文件
+
+## 自动打包和封装安装包
+
+在经过了一些列市场同学的蹂躏后觉得应该用grunt写一个自动化的脚本来解决越来越频发的打包需求，所以增强了下用来的grunt功能，具体可以查看项目内的`Gruntfile.js`
