@@ -1,0 +1,28 @@
+{
+  "productName": "Practice",
+  "version": "0.0.1.0",
+  "description": "Practice App for NW.js",
+  "author": "mingxin.huang",
+  "name": "Practice",
+  "manifestUrl": "http://xxx.com/updater.json",
+  "main": "./index.html",
+  "node-remote" : "<all_urls>",
+  "webview": {
+       "partitions": [
+           {
+               "name": "persist:trusted-practice",
+               "accessible_resources": ["<all_urls>"]
+           }
+       ]
+  },
+  "window": {
+    "title": "Practice",
+    "width": 1000,
+    "height": 850,
+    "icon": "./icons/icon.png",
+    "frame" : false
+  },
+  "dependencies": {
+    "node-webkit-updater": "^0.3.3"
+  }
+}
