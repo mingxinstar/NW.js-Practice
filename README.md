@@ -116,6 +116,14 @@ OK，代码写完了那么就要考虑接下来的问题了，帮你的代码打
 直到我使用了[grunt-nw-builder](https://github.com/nwjs/grunt-nw-builder/)，好吧，其实他们并没有什么区别，这个也只是`nw-builder`的grunt插件，可是问题是这个
 用起来毫无问题。。。Anyway，总之能用就好，具体使用方法参见`grunt`和`grunt-nw-builder`文档，或者可以看这个项目中的`Gruntfile.js`
 
+* 生成windows上多平台自适应图标
+    在`nw-builder`中有一个参数`winIcon`用来设置应用的图标，在这里需要用到`Axialis IconWorkshop`这个软件，具体流程
+
+    1. 第一步生成一张256*256的icon图片，格式以png为佳
+    2. 将图片放到`Axialis IconWorkshop`中
+    3. 选择所有RGBA的格式，然后导出
+    4. 将`winIcon`设置为生成的图片ico地址
+
 ## 应用安装包(windows installer)
 
 在windows下有比较多的安装包打包工具，比如`Windows installer`,`NSIS`或`Inno Setup`，在这里我选择使用`NSIS`，嗯，当初觉得这个可能用起来比较简单，但是实际上并！不！是！
